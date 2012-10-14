@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -e 's_<<.*>>=_```{r}_g' -e 's_\@_```_g'  -e 's_@_```_g' -e 's_\\title{_# _g' -e 's_\\section{_## _g' -e 's_\\subsection{_### _g' -e 's_\\subsubsection{_#### _g' -e 's_\\includegraphics.*{/_![alt text](_g' -e 's_\\item_* _g' $1
