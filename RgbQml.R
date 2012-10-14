@@ -12,7 +12,7 @@ RgbQml<-function(aa,flnm="NMDSTest.qml",labels=rownames(aa),attribute="cveecon4"
 # There is no guarantee that it will give the results you want without tweaking
   
 # A useful trick to is to open your style sheet in a text editor and then run a 
-# find and replace on all commas. Replace them by an escaped comma /". You
+# find and replace on all commas. Replace them by an escaped comma \". You
 #can then paste all the test into R and modify it as you need.
   
 header<-"<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
