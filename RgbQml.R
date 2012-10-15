@@ -6,6 +6,8 @@ RgbQml<-function(aa,flnm="NMDSTest.qml",labels=rownames(aa),attribute="cveecon4"
 # produce the wrong results.
   
 # MAKE SURE THAT YOU NAME THE ATTRIBUTE IN YOUR VECTOR LAYER THAT YOU WISH TO COLOUR
+
+
   
 # To use the function you will probably have to check carefully that the header and
 # footer information coincides with the QML style sheet that you are using
@@ -14,6 +16,8 @@ RgbQml<-function(aa,flnm="NMDSTest.qml",labels=rownames(aa),attribute="cveecon4"
 # A useful trick to is to open your style sheet in a text editor and then run a 
 # find and replace on all commas. Replace them by an escaped comma \". You
 #can then paste all the test into R and modify it as you need.
+
+
   
 header<-"<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version=\"1.8.0-Lisboa\" minimumScale=\"0\" maximumScale=\"1e+08\" minLabelScale=\"0\" maxLabelScale=\"1e+08\" hasScaleBasedVisibilityFlag=\"0\" scaleBasedLabelVisibilityFlag=\"0\">
@@ -24,6 +28,12 @@ header<-"<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 
 # So now add in the name of the attribute that is used for the classification field.
 cat(header,attribute,"</classificationfield>",file=flnm,sep="")
+
+# Make sure the input data is normalised (range between 0 and 1)
+normalise<-function(x)(x-min(x))/(max(x)-min(x))
+aa[,1]<-normalise(aa[,1])
+aa[,2]<-normalise(aa[,2])
+aa[,3]<-normalise(aa[,3])
 
 #Below is the first part of the block that defines a style for each level.
 
